@@ -32,5 +32,5 @@ The application uses Capacitor for local storage and communication with external
 1. **Clone the repository**:
 
    ```bash
-   git clone [https://github.com/yourusername/skytalk.git](https://github.com/t-pavlik/SkyTalk)
+   git clone https://github.com/t-pavlik/SkyTalk
    cd skytalk
