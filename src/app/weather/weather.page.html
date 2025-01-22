@@ -1,15 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="gradient-text large-title">
       Weather
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" scroll-y="false">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Weather</ion-title>
+    <ion-toolbar class="ion-text-center">
+      <ion-title size="large" class="gradient-text large-title">Weather</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-label>City:</ion-label>
+    <ion-input [(ngModel)]="city" placeholder="Enter city"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="loadWeather()">Get Weather</ion-button>
+
+  <div *ngIf="weatherData" class="weather-info">
+    <h2>{{ weatherData.name }}</h2>
+    <p>Temperature: {{ weatherData.main.temp }} °C</p>
+    <p>Condition: {{ weatherData.weather[0].description }}</p>
+    <p>Humidity: {{ weatherData.main.humidity }}%</p>
+  </div>
 </ion-content>

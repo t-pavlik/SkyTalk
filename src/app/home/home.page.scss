@@ -1,19 +1,16 @@
   .content-container {
-    margin: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
   
   .app-description {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #555;
     margin: 20px;
     line-height: 1.6;
-  }
-  
-  ion-button {
-    margin-top: 40px;
-    --background: #3880ff; /* Button background color */
-    --color: white;
   }
 
   .custom-title {
@@ -43,5 +40,11 @@
     100% {
       background-position: 100% 0%;
     }
+  }
+  
+  .large-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.2;
   }
   
