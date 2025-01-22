@@ -1,0 +1,47 @@
+  .content-container {
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .app-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 20px;
+    line-height: 1.6;
+  }
+  
+  ion-button {
+    margin-top: 40px;
+    --background: #3880ff; /* Button background color */
+    --color: white;
+  }
+
+  .custom-title {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+  
+  .custom-header {
+    margin-top: 30px;
+  }
+
+  .gradient-text {
+    width: 100%;
+    text-align: center;
+    display: block;
+    background: linear-gradient(90deg, gold, purple, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 3s infinite alternate;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 100% 0%;
+    }
+  }
+  
