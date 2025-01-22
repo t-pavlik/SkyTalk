@@ -2,7 +2,7 @@
 
 **SkyTalk** is an Ionic-based mobile application that provides two main features:
 - **Text Translation**: Allows users to translate text between different languages.
-- **Weather Information**: Displays current weather data based on the user's location.
+- **Weather Information**: Displays current weather data.
 
 The application uses Capacitor for local storage and communication with external APIs for translation and weather data.
 
@@ -14,7 +14,7 @@ The application uses Capacitor for local storage and communication with external
 - Stores previously translated texts for easy access.
 
 ### 2. **Weather Information**
-- Displays current weather based on the user's location.
+- Displays current weather.
 - Retrieves weather information via an external weather API.
 - Shows temperature, weather conditions, and other relevant details.
 
