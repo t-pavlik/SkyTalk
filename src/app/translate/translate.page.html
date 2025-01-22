@@ -12,4 +12,44 @@
       <ion-title size="large" class="gradient-text large-title">Translate</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <form (ngSubmit)="onTranslate()">
+    <ion-item>
+      <ion-label position="floating">Text to Translate</ion-label>
+      <ion-textarea [(ngModel)]="textToTranslate" name="textToTranslate"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Source Language</ion-label>
+      <ion-select [(ngModel)]="sourceLang" name="sourceLang">
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="cs">Czech</ion-select-option>
+        <ion-select-option value="de">German</ion-select-option>
+        <ion-select-option value="es">Spanish</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Target Language</ion-label>
+      <ion-select [(ngModel)]="targetLang" name="targetLang">
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="cs">Czech</ion-select-option>
+        <ion-select-option value="de">German</ion-select-option>
+        <ion-select-option value="es">Spanish</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="button-spaced">Translate</ion-button>
+  </form>
+
+  <div *ngIf="translatedText">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Translated Text</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ translatedText }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

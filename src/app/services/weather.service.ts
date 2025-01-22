@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,31 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  getWeatherByCity(city: string): Observable<any> {
+  getWeatherByCity(city: string): Observable<Weather> {
     const url = `${this.apiUrl}?q=${city}&appid=${this.apiKey}&units=metric`;
-    return this.http.get(url);
+    return this.http.get<any>(url).pipe(
+      map((data) => {
+        return {
+          city: data.name,
+          temperature: data.main.temp,
+          description: data.weather[0].description,
+          icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+          humidity: data.main.humidity,
+          windSpeed: data.wind.speed,
+          date: new Date(data.dt * 1000).toLocaleDateString(),
+        } as Weather;
+      })
+    );
   }
 }
+
+export interface Weather {
+  city: string;
+  temperature: number;
+  description: string;
+  icon: string;
+  humidity: number;
+  windSpeed: number;
+  date: string;
+}
+

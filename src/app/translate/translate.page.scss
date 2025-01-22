@@ -48,3 +48,22 @@
     line-height: 1.2;
   }
   
+form {
+    margin-bottom: 20px;
+  
+    ion-item {
+      margin-bottom: 15px;
+    }
+  
+    ion-button {
+      margin-top: 10px;
+    }
+  }
+  
+  ion-card {
+    margin-top: 20px;
+  }
+  
+  .button-spaced {
+    margin: 0 16px;
+  }

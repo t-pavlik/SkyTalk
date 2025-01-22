@@ -28,6 +28,7 @@
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/splash-screen": "^7.0.0",
     "@capacitor/status-bar": "7.0.0",
+    "@google-cloud/translate": "^8.5.0",
     "@ionic/angular": "^8.0.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",

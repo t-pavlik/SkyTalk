@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { WeatherService } from '../services/weather.service';
+import { Component, OnInit } from '@angular/core';
+import { Weather, WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -7,27 +7,29 @@ import { WeatherService } from '../services/weather.service';
   styleUrls: ['weather.page.scss'],
   standalone: false,
 })
-export class WeatherPage {
-
-  city = 'Prague';
-  weatherData: any;
+export class WeatherPage implements OnInit {
+  weather: Weather | null = null;
+  city: string = '';
 
   constructor(private weatherService: WeatherService) {}
 
-  ionViewDidEnter() {
+  ngOnInit() {
+    this.city = 'Prague';
     this.loadWeather();
   }
 
   loadWeather() {
-    this.weatherService.getWeatherByCity(this.city).subscribe(
-      (data) => {
-        this.weatherData = data;
-        console.log(data);
-      },
-      (error) => {
-        console.error('Error loading weather', error);
-      }
-    );
-  }
+    if (!this.city.trim()) {
+      return;
+    }
 
+    this.weatherService.getWeatherByCity(this.city).subscribe({
+      next: (data) => {
+        this.weather = data;
+      },
+      error: (err) => {
+        console.error('Error fetching weather:', err);
+      },
+    });
+  }
 }

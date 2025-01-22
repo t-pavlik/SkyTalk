@@ -13,17 +13,45 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item>
-    <ion-label>City:</ion-label>
-    <ion-input [(ngModel)]="city" placeholder="Enter city"></ion-input>
-  </ion-item>
+  <form (ngSubmit)="loadWeather()">
+    <ion-item>
+      <ion-label position="floating">Enter City</ion-label>
+      <ion-input [(ngModel)]="city" name="city" required></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" class="button-spaced">GO</ion-button>
+  </form>
 
-  <ion-button expand="full" (click)="loadWeather()">Get Weather</ion-button>
+  <div *ngIf="weather; else loading">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ weather.city }}</ion-card-title>
+        <ion-card-subtitle>{{ weather.date }}</ion-card-subtitle>
+      </ion-card-header>
 
-  <div *ngIf="weatherData" class="weather-info">
-    <h2>{{ weatherData.name }}</h2>
-    <p>Temperature: {{ weatherData.main.temp }} °C</p>
-    <p>Condition: {{ weatherData.weather[0].description }}</p>
-    <p>Humidity: {{ weatherData.main.humidity }}%</p>
+      <ion-card-content>
+        <div class="weather-info">
+          <img [src]="weather.icon" alt="Weather icon" />
+          <h1>{{ weather.temperature }}°C</h1>
+          <p>{{ weather.description | titlecase }}</p>
+        </div>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="water-outline"></ion-icon>
+              <p>Humidity: {{ weather.humidity }}%</p>
+            </ion-col>
+            <ion-col>
+              <ion-icon name="leaf-outline"></ion-icon>
+              <p>Wind: {{ weather.windSpeed }} m/s</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
   </div>
+
+  <ng-template #loading>
+    <p>Loading weather data...</p>
+  </ng-template>
 </ion-content>

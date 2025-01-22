@@ -13,7 +13,6 @@
     }
   }
   
-
   .content-container {
     text-align: center;
     display: flex;
@@ -62,5 +61,22 @@
     font-size: 2.5rem;
     font-weight: bold;
     line-height: 1.2;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  
+    ion-item {
+      margin-bottom: 10px;
+    }
+  
+    ion-button {
+      --background: #3880ff;
+      --background-activated: #3171e0;
+    }
+  }
+  
+  .button-spaced {
+    margin: 0 16px;
   }
   
