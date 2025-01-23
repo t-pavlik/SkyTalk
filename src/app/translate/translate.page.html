@@ -6,13 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" scroll-y="false">
-  <ion-header collapse="condense">
-    <ion-toolbar class="ion-text-center">
-      <ion-title size="large" class="gradient-text large-title">Translate</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true">
   <form (ngSubmit)="onTranslate()">
     <ion-item>
       <ion-label position="floating">Text to Translate</ion-label>
@@ -52,4 +46,19 @@
       </ion-card-content>
     </ion-card>
   </div>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Translation History</ion-label>
+      <ion-button fill="outline" color="danger" (click)="clearTranslations()" style="margin-right: 15px;">Clear</ion-button>
+    </ion-list-header>
+
+    <ion-item *ngFor="let translation of translations">
+      <ion-label>
+        <h2>{{ translation.originalText }}</h2>
+        <p>{{ translation.translatedText }}</p>
+        <small>{{ translation.sourceLang }} → {{ translation.targetLang }} ({{ translation.date | date:'short' }})</small>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
